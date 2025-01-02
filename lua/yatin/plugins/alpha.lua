@@ -7,10 +7,18 @@ return {
         local dashboard = require("alpha.themes.dashboard")
 
         dashboard.section.header.val = {
-            "YOU ARE THE GREATEST",
-            "BELIVE IN YOURSELF AND YOU WILL SUCCEED",
-            "CHASE EXCELLENCE, NOT SUCCESS...",
-            "SUCCESS WILL FOLLOW",
+            " /$$    /$$          /$$     /$$         ",
+            "|  $$  /$$/         | $$    |__/         ",
+            "\\  $$ /$$//$$$$$$  /$$$$$$   /$$ /$$$$$$$ ",
+            " \\  $$$$/|____  $$|_  $$_/  | $$| $$__  $$",
+            "  \\  $$/  /$$$$$$$  | $$    | $$| $$  \\ $$",
+            "   | $$  /$$__  $$  | $$ /$$| $$| $$  | $$",
+            "   | $$ |  $$$$$$$  |  $$$$/| $$| $$  | $$",
+            "   |__/  \\_______/   \\___/  |__/|__/  |__/",
+            "                                          ",
+            "                                          ",
+            "         Chase Excellence, not Success    ",
+            "             Success will follow          ",
         }
 
         dashboard.section.buttons.val = {
@@ -22,9 +30,22 @@ return {
             dashboard.button("q", "Quit Nvim", "<cmd>qa<CR>"),
         }
 
+        dashboard.section.footer.val = {
+            "Inspired by the pursuit of excellence.",
+        }
+
+        -- Apply custom highlights
+        vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "#50fa7b", bold = true })   -- Header in pink
+        vim.api.nvim_set_hl(0, "AlphaButtons", { fg = "#ff79c6", bold = true })  -- Buttons in cyan
+        vim.api.nvim_set_hl(0, "AlphaFooter", { fg = "#ff79c6", italic = true }) -- Footer/quote in green
+
+        -- Assign highlights to sections
+        dashboard.section.header.opts.hl = "AlphaHeader"
+        dashboard.section.buttons.opts.hl = "AlphaButtons"
+        dashboard.section.footer.opts.hl = "AlphaFooter"
+
         alpha.setup(dashboard.opts)
 
         vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
-
     end,
 }
